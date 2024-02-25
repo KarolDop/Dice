@@ -2,29 +2,35 @@
 {
     public class NewDice
     {
-        private int howManyWall;
-        private int id;
-        private static int howManyDice = 0;
+        private int _howManyWall;
+        private int _id;
+        private static int _howManyDice = 0;
+        private int count;
 
         public int HowManyWall
         {
-            get { return howManyWall; }
+            get { return _howManyWall; }
         }
         public int Id
         {
-            get { return id; }
+            get { return _id; }
+        }
+
+        public int Count 
+        { 
+            get { return count; } 
         }
 
         public NewDice(int howManyWall)
         {
-            this.howManyWall = howManyWall;
-            howManyDice++;
-            this.id = howManyDice;
+            this._howManyWall = howManyWall;
+            _howManyDice++;
+            this._id = _howManyDice;
         }
 
-        public int NewRoll()
+        public void NewRoll()
         {
-            return Roll.DiceRoll(howManyWall);
+            count = Roll.DiceRoll(_howManyWall);
         }
     }
 }

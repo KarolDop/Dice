@@ -1,6 +1,5 @@
 ﻿using Dice;
 using NUnit.Framework;
-using System;
 
 namespace DiceTest
 {
@@ -8,7 +7,7 @@ namespace DiceTest
     class NewDiceTest
     {
         [Test, Order(0)]
-        public void NewDice_CheckIfObjectAreCreatedWithCorrectID()
+        public void NewDice_CheckIfObjectAreCreatedWithCorrectID_returnCorrectID()
         {
             //Arrange
             var dice1 = new NewDice(1);
@@ -30,7 +29,7 @@ namespace DiceTest
         }
 
         [Test]
-        public void NewDice_CheckIfConstructorAssignCorrectNoOfWall()
+        public void NewDice_CheckIfConstructorCreateCorrectObject_ReturnWallNo()
         {
             //Arrange
             var dice = new NewDice(6);
@@ -41,9 +40,6 @@ namespace DiceTest
 
             //Assert
             Assert.AreEqual(6, noOfWall);
-
-            GC.Collect(GC.MaxGeneration);
-            GC.WaitForPendingFinalizers();
         }
     }
 }

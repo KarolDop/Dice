@@ -1,6 +1,6 @@
 using NUnit.Framework;
 using Dice;
-
+using System.Collections.Generic;
 
 namespace DiceTest
 {
@@ -8,29 +8,37 @@ namespace DiceTest
     public class RollTest
     {
         [Test]
-        public void DiceRoll_CheckIfRollAreInRangeFrom0to1()
+        public void DiceRoll_RetrunIntValueAfterRoll_InRange1To2()
         {
             //Arrange
             int number;
 
             //Act
-            number = Roll.DiceRoll(1);
+            number = Roll.DiceRoll(2);
 
             //Assert
-            Assert.That(number, Is.InRange(0,1));
+            Assert.That(number, Is.InRange(1,2));
         }
 
         [Test]
-        public void DiceRoll_CheckIfRollAreInRangeFrom0to10()
+        public void Throw_ReturnIntValueAfterRollFewDiceInOneTime_InRange1To2()
         {
             //Arrange
-            int number;
+            List<NewDice> forThrow = new List<NewDice>();
+            for(int i = 0; i < 6; i++)
+            {
+                var dice = new NewDice(2);
+                forThrow.Add(dice);
+            }
 
             //Act
-            number = Roll.DiceRoll(10);
+            Roll.Throw(forThrow);
 
             //Assert
-            Assert.That(number, Is.InRange(0, 10));
+            foreach(NewDice dice in forThrow)
+            {
+                Assert.That(dice.Count, Is.InRange(1,2));
+            }
         }
     }
 }
